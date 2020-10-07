@@ -8,14 +8,14 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   } else if (isNaN(amount)) {
     return `Параметр "Общая стоимость" содержит неправильное значение "${window.amount.value}"`
   }
-  let currentMonth = new Date().getMonth();
-  let currentYear = new Date().getFullYear();
-  let yearsBetweenYears = date.getFullYear() - currentYear;
-  let amountMonth = yearsBetweenYears * 12 - currentMonth + date.getMonth();
-  let interestRate = (percent / 100) / 12;
-  let loanBody = amount - contribution;
-  let monthlyPayment = loanBody * (interestRate + (interestRate / (((1 + interestRate) ** amountMonth) - 1)))
-  let totalAmount = (amount + (monthlyPayment * amountMonth - amount)).toFixed(2);
+  const currentMonth = new Date().getMonth();
+  const currentYear = new Date().getFullYear();
+  const yearsBetweenYears = date.getFullYear() - currentYear;
+  const amountMonth = yearsBetweenYears * 12 - currentMonth + date.getMonth();
+  const interestRate = (percent / 100) / 12;
+  const loanBody = amount - contribution;
+  const monthlyPayment = loanBody * (interestRate + (interestRate / (((1 + interestRate) ** amountMonth) - 1)))
+  const totalAmount = (amount + (monthlyPayment * amountMonth - amount)).toFixed(2);
 
   console.log(Number(totalAmount));
 
@@ -23,8 +23,5 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 }
 
 function getGreeting(name) {
-  if (!name) {
-    return `Привет, мир! Меня зовут Аноним`
-  }
-  return `Привет, мир! Меня зовут ${name}`;
+  return `Привет, мир! Меня зовут ${(!name || name === 'undefined' || name === 'null') ? 'Аноним' : name}`;
 }
