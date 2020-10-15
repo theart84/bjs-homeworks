@@ -1,12 +1,7 @@
 'use strict'
-String.prototype.isPalindrome = function () {
-  const newString = this.replace(/\s/g, '').toLocaleLowerCase();
-  for (let i = 0; i < newString.length; i++) {
-    if (newString[i] !== newString[newString.length - 1 - [i]]) {
-      return false;
-    }
-  }
-  return true;
+String.prototype.isPalindrome = function() {
+  const source = this.toLowerCase().split("");
+  return source.join("") === source.reverse().join("");
 }
 
 function getAverageMark(marks) {
@@ -21,12 +16,7 @@ function getAverageMark(marks) {
 function checkBirthday(birthday) {
   const currentDate = new Date();
   const birthdayDate = new Date(birthday);
-  let agePerson = currentDate.getFullYear() - birthdayDate.getFullYear();
-  let diffCurrentDate = currentDate.setFullYear(1970);
-  let diffBirthdayDate = birthdayDate.setFullYear(1970);
-  console.log(diffCurrentDate)
-  console.log(diffBirthdayDate)
-  if (diffCurrentDate < diffBirthdayDate)
-     agePerson -= 1
-  return agePerson >= 18;
+  const diffMs = (+currentDate) - (+birthdayDate);
+  const age = diffMs / 31557600000;
+  return age > 18;
 }
