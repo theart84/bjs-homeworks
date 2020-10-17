@@ -132,9 +132,10 @@ class StudentLog {
   getTotalAverage() {
     const arr = []
     for (const key in this.academicSubjects) {
-      this.academicSubjects[key] = this.getAverageBySubject(key);
-      if (this.academicSubjects[key] !== 0)
-        arr.push(this.academicSubjects[key]);
+      let immutableArray = [...this.academicSubjects[key]]
+      immutableArray = this.getAverageBySubject(key);
+      if (immutableArray !== 0)
+        arr.push(immutableArray);
     }
     this.academicSubjects.average = arr;
     return this.getAverageBySubject('average');
