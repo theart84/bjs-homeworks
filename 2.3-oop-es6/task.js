@@ -130,6 +130,7 @@ class StudentLog {
   }
 
   getTotalAverage() {
+    this.academicSubjects.average = [];
     const arr = []
     for (const key in this.academicSubjects) {
       let immutableArray = [...this.academicSubjects[key]]
