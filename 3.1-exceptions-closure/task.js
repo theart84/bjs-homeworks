@@ -11,7 +11,7 @@ function validateCount(value) {
   try {
     return parseCount(value);
   } catch (e) {
-    if (e.message === 'Невалидное значение') return new Error('Невалидное значение')
+    if (e.message === 'Невалидное значение') return e;
   }
 }
 
@@ -40,8 +40,7 @@ class Triangle {
 
 function getTriangle(sideA, sideB, sideC) {
   try {
-    const newTriangle = new Triangle(sideA, sideB, sideC);
-    return newTriangle;
+    return new Triangle(sideA, sideB, sideC);
   } catch (e) {
     return {
       getArea() {
