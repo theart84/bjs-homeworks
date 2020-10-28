@@ -85,6 +85,7 @@ class AlarmClock {
   clock.printAlarms();
   clock.start()
   setTimeout(clock.stop, 300000);
+  setTimeout(clock.clearAlarms, 305000);
 })()
 
 
