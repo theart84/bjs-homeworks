@@ -17,14 +17,12 @@ function compareArrays(arr1, arr2) {
 
 function memorize(fn, limit) {
     const memory = [];
-    let counter = 0;
     return function newFn(...args) {
         let findObject = memory.find(item => compareArrays(item.args, args));
         if (findObject)
             return findObject.result;
         const result = fn(...args);
-        counter++;
-        if (counter > limit)
+        if (memory.length > limit)
             memory.shift();
         memory.push({
             args,
